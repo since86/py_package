@@ -2,17 +2,18 @@ class Person():
     name = 'noname'
     age = 18
     gender = '男'
-    def eat(self):
+    def _eat(self):
         print(self.age)
 
-class Student(Person):
-    def learn(self):
-        print('学习')
+    def __init__(self):
+        print('工作')
 
-    def eat(self):
-        super().eat()
-        print('补充营养')
+class Worker(Person):
+    def __init__(self,salary):
+        print('工作一天，收入{0}元'.format(salary))
 
-eric = Student()
-eric.eat()
-eric.learn()
+class Teacher(Worker):
+    pass
+
+t = Teacher(100)
+
