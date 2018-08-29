@@ -12,9 +12,11 @@ class ThreadFunc():
         sleep(nsec)
         print('End loop',nloop, 'at', ctime())
 
+
 def main():
     print('Starting at', ctime())
     t = ThreadFunc('loop')
+
     # t1 和t2的定义方式相等
     t1 = threading.Thread(target=t.loop, args=('Loop1',4))
     t2 = threading.Thread(target=ThreadFunc('loop').loop, args=('Loop2', 2))
