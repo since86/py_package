@@ -12,6 +12,7 @@ class Worker(threading.Thread):
         global counter, mutex
         while counter and self.wait_num:
             time.sleep(random.randrange(2,5))
+            print(time.ctime())
 
             mutex.acquire()
 
@@ -20,9 +21,10 @@ class Worker(threading.Thread):
                 mutex.release()
                 break
 
-            print('当前余票：',counter,'售出一张')
+            #print('当前余票：',counter)
             counter -= 1
-            print(self.getName(),'当前余票：',counter,'张')
+            print(self.getName(),'售出一张，当前余票：',counter,'张')
+
             mutex.release()
 
             self.wait_num -= 1

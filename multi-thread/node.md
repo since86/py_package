@@ -65,9 +65,25 @@
     - threading.Timer
         - Timer是利用多线程，在指定时间后启动一个功能
         
-    - 可重入锁 t15
+    - 可重入锁 
         - 一个锁，可以被一个线程多次申请
         - 主要解决递归调用的时候，需要申请锁的状况
+# 线程替代方案
+   - subProcess
+   - multiProcessing
+   - concurrent.futures
+       - 异步执行模块
+       - 任务级别的操作
+# 多进程
+- 进程间通讯（InterProcessCommunication IPC)
+- 进程之间没有任何共享状态
+- 进程的创建 
+    - 直接生产Process对象 p01
+    - 派生子类 p02
     
+- 在os查看pid，ppid以及他们的关系 p03
+
+- 生产者消费者模型 p04
+
     
      
