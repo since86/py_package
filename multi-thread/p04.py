@@ -1,6 +1,6 @@
 import multiprocessing
 from time import ctime
-
+from collections import Iterable,Iterator
 def consumer(input_q):
     print('Into consumer:',ctime())
     while True:
@@ -22,6 +22,12 @@ def producer(sequeue, output_q):
 if __name__ == '__main__':
     q = multiprocessing.JoinableQueue()
 
+    l = [1,2,3,4]
+    print(isinstance(l,Iterable))
+    print(isinstance(l,Iterator))
+
+    ll = iter(l)
+    print(isinstance(ll,Iterator))
     cons_p = multiprocessing.Process(target=consumer, args=(q,))
     #cons_p.daemon = True
     cons_p.start()

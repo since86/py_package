@@ -1,4 +1,5 @@
 from collections import namedtuple
+from inspect import getgeneratorstate
 
 ResClass = namedtuple('Res','count average')
 
@@ -34,14 +35,18 @@ def client():
     for k,v in process_data.items():
         #获得协程
         coroutine = grouper(storages,k)
+        print(1,getgeneratorstate(coroutine))
         #预激协程
         next(coroutine)
+        #print(2,getgeneratorstate(coroutine))
         #发送数据到协程
         for dt in v:
             coroutine.send(dt)
+        #print(3,getgeneratorstate(coroutine))
         #终止协程
         coroutine.send(None)
-
+        #print(4,getgeneratorstate(coroutine))
+    print(5,getgeneratorstate(coroutine))
     print(storages)
 
 if __name__ == '__main__':
