@@ -18,7 +18,7 @@
     - info: meta信息
     - getcode: 响应吗
     
-- request.date
+- request.date v03
     - 访问网络的2种方法
         - get
         - post
