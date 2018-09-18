@@ -96,4 +96,24 @@
             - 打开登录网页自动通过用户名密码登录
             - 自动提取反馈回来的cookie
             - 利用提取的cookie登录隐私页面
-            
+        
+        - handler是Handler的实例，用来负责处理复杂请求 
+        
+                # 生成cookie管理器
+                cookie_handler = request.HTTPCookieProcessor(cookie)
+                # 创建http请求管理器
+                http_handler = request.HTTPHandler()
+                # 生成https请求管理器
+                https_handler = request.HTTPSHandler()   
+        - 创建handler后，使用opener打开，打开后相应的业务由相应的handler进行处理
+        
+        - cookie作为一个变量，打印出来 v13
+        
+    - cookie的保存：FileCookieJar v14
+    - cookie的读取： v15
+
+- ssl认证
+    - 遇到不信任的ssl证书，需要单独处理 v16    
+
+- js加密
+      

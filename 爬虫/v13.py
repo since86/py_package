@@ -30,21 +30,12 @@ def login():
     # 使用opener发起请求
     rsp = opener.open(req)
 
-def getHomePage():
-    url = 'https://home.cnblogs.com/u/wallfacer/'
-
-    rsp = opener.open(url)
-    html = rsp.read().decode()
-    with open('rsp.html', 'w', encoding='utf-8') as f:
-        f.write(html)
 
 if __name__ == '__main__':
     login()
+    # 打印cookie
     print(cookie)
-    getHomePage()
-
-
-
-
-
-
+    for item in cookie:
+        print(type(item),item)
+        for i in dir(item):
+            print(i)

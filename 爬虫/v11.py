@@ -10,6 +10,9 @@ if __name__ == '__main__':
 
     req = request.Request(url=url, headers=headers)
     rsp = request.urlopen(req)
+
+    print(rsp.headers)
+    print(dir(rsp))
     html = rsp.read().decode()
 
     with open('rsp.html', 'w', encoding='utf-8') as f:

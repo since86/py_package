@@ -2,8 +2,10 @@
 from urllib import request, error, parse
 from http import cookiejar
 
-# 创建CookieJar实例
-cookie = cookiejar.CookieJar()
+# 创建FileCookieJar实例
+cookie = cookiejar.MozillaCookieJar()
+# 读取cookie
+cookie.load('cookie.txt',ignore_discard=True, ignore_expires=True)
 # 生成cookie管理器
 cookie_handler = request.HTTPCookieProcessor(cookie)
 # 创建http请求管理器
@@ -14,22 +16,6 @@ https_handler = request.HTTPSHandler()
 #请求管理器
 opener = request.build_opener(http_handler,https_handler,cookie_handler)
 
-def login():
-    # form action提取
-    url = 'https://passport.cnblogs.com/user/signin?ReturnUrl=https%3A%2F%2Fhome.cnblogs.com%2F'
-
-    #登录form内容
-    data = {
-        'input1' : 'bravoo',
-        'input2' : 'w19890816'
-    }
-
-    data = parse.urlencode(data)
-
-    req = request.Request(url=url, data=data.encode())
-    # 使用opener发起请求
-    rsp = opener.open(req)
-
 def getHomePage():
     url = 'https://home.cnblogs.com/u/wallfacer/'
 
@@ -39,12 +25,5 @@ def getHomePage():
         f.write(html)
 
 if __name__ == '__main__':
-    login()
     print(cookie)
     getHomePage()
-
-
-
-
-
-
