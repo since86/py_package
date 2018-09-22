@@ -3,7 +3,7 @@
 n = e("./jquery-1.7");
 salt = "" + ((new Date).getTime() + parseInt(10 * Math.random(), 10))
 sign = n.md5("fanyideskweb" + e + t + "6x(ZHw]mwzX#u0V7@yfwK")
-md5一共需要4个参数，第一个和第四个固定，t为salt值，e为传入的event
+md5一共需要4个参数，第一个和第四个固定，t为salt值，e为传入的event(key值)
 '''
 
 def getSalt():

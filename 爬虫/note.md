@@ -121,7 +121,73 @@
     - 通过阅读加密代码，就可以模拟加密过程，从而破解 v17 
     - 破解js加密 v18
     
-    -
+    
     #(.*?):(.*) 替换为 '$1':'$2'可以为选中的键值对内容添加引号
+    
+- ajax
+    - 异步请求
+    - 一定会有url，请求方法，可能有数据
+    - 一般使用json格式
+    - 爬取豆瓣 v19
+    
+# Requests
+- HTTP For Humans,更简洁美好
+- 继承了urllib的所有特征
+- 底层使用的是urllib3
+- 开源文档：https://github.com/requests/requests
+- 中文资料： http://docs.python-requests.org/zh_CN/latest/user/quickstart.html
+- 安装： conda install requests
+- get请求
+    - requests.get(url)
+    - requests.request('get',url)
+    - 可以带有headers和parmas v20
+    
+- get返回的内容 v21
+
+- post v22
+    - rsp = requests.post(url, data=data, headers=headers)
+    - data和header要求是dict类型
+    
+- proxy
+    - 用户验证
+        - proxy位dict格式
+            - proxy = {'http':'username:password@ipadress:port'}
+            - rsp = requests.get(url, proxies=proxy)
+            
+    - web客户端验证
+        - 如果遇到web客户端验证，需要添加auth=(用户名，密码)
+        
+                    auth = (username, password)
+                    rsp = requests.get(url, auth=auth)
+   
+- cookie
+    - requests可以自动处理cookie
+        
+            rsp = requests.get(url)
+            cookiejar = rsp.cookies
+            # 可以将cookiejar转换为字典
+            cookiedict = requests.utils.dict_from_cookiejar(cookiejar)
+       
+- session
+    - 非服务器端session
+    - 模拟一次会话，从客户端浏览器链接服务器开始，到客户端浏览器断开
+    - 能让我们跨请求时保存某些参数，比如一个session实例发出的所有请求之间保持cookie
+            
+            ss = requests.session()
+            
+            headers = {'User-Agent':'******'}
+            
+            data = {key : value}
+            
+            # 此时，由创建的session管理,负责发出请求
+            ss.post(url ,data=data, headers=headers)
+            
+            rsp = ss.get(url)
+            
+- https请求验证ssl证书认证
+    - 参数verify负责表示是否需要验证ssl证书，默认是True
+    - 如果不需要验证ssl，设置成False
+            
+            rsp = requests.get(url, verify=False)
     
       
